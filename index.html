@@ -4,558 +4,677 @@
 <head>
     <meta charset="utf-8">
     <title>My VR Scene</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.1.4/dist/aframe-particle-system-component.min.js"></script>
 
 </head>
 
 <body>
-    <a-scene>
-        <!-- <a-light type="ambient" color="#white"></a-light> -->
-        <a-camera position="0 9 00"></a-camera>
+    <a-scene fog="type: linear; color: #cccccc; near: 20; far: 500">
+        <a-camera id="camera" position="0 9 -160"></a-camera>
         <!-- Ground plane -->
         <a-plane rotation="-90 0 0" width="1000" height="1000" color="#333333"></a-plane>
 
-<!-- <a-plane position="0 1 300 " rotation="-90 0 0" width="1000" height="500" material="color: #008000"
-    environment="preset: forest; dressingAmount: 500" geometry=""></a-plane> -->
-    <a-sky environment="preset: forest; dressingAmount: 500"></a-sky>
-    
-    <!-- Ground -->
-    <a-plane position="0 1 300" rotation="-90 0 0" width="1000" height="500" material="color: #008000"></a-plane>
 
 
-            <!-- Ambient Light -->
-            <!-- <a-light type="ambient" color="#888"></a-light> -->
+        <!-- <a-light type="ambient" intensity="1.5"></a-light>-->
+        
 
             <a-assets>
-                <img id="skyTexture" src="sky.jpg">
-                <a-asset-item id="road" src="road.glb"></a-asset-item>
-                <a-assets-item id="sidewalk" src="sidewalk.glb"></a-assets-item>
-               
-                 <a-assets-item id="streetLight" src="streetLight.glb"></a-assets-item> 
-               <a-assets-item id="cityBlock" src="cityBlock.glb"></a-assets-item>
-                <a-assets-item id="roadIntersection" src="roadintersection.glb"></a-assets-item>
-                <a-assets-item id="building1" src="building1.glb"></a-assets-item>
-                <a-assets-item id="cityHotel" src="cityHotel.glb"></a-assets-item>
-                <a-assets-item id="citybuilding" src="citybuilding.glb"></a-assets-item>
-                <a-assets-item id="hotelExterior" src="hotelExterior.glb"></a-assets-item>
-                <a-assets-item id="metlifeBuilding" src="metlifeBuilding.glb"></a-assets-item>
-                <a-assets-item id="basketball" src="basketball.jpg"></a-assets-item>
-                <a-assets-item id="basketballHoop" src="basketballHoop.glb"></a-assets-item>
-                <a-assets-item id="basketBall" src="basketBall.glb"></a-assets-item>
-                <a-assets-item id="fence" src="fence.glb"></a-assets-item>
-               <a-assets-item id="parkCafe" src="parkCafe.glb"></a-assets-item>
-                <a-assets-item id="empireStateBuilding" src="empireStateBuilding.glb"></a-assets-item>
-                 <a-assets-item id="building2" src="building2.glb"></a-assets-item> 
-                    <a-assets-item id="stadium" src="stadium.glb"></a-assets-item>
-                <a-assets-item id="building3" src="building3.glb"></a-assets-item>
-                <a-assets-item id="apartment" src="apartment.glb"></a-assets-item>
-                <a-assets-item id="chicagoBuildings" src="chicagoBuildings.glb"></a-assets-item>
-                <a-assets-item id="cornerBuilding" src="cornerBuilding.glb"></a-assets-item>
-                <a-assets-item id="building4" src="building4.glb"></a-assets-item>
-                <a-assets-item id="residentialTower" src="residentialTower.glb"></a-assets-item>
-                <a-assets-item id="building5" src="building5.glb"></a-assets-item>
-                <a-assets-item id="trafficLight" src="trafficLight.glb"></a-assets-item>
-                <a-assets-item id="tree" src="tree.glb"></a-assets-item>
-                <a-assets-item id="busStop" src="busStop.glb"></a-assets-item>
-                <a-assets-item id="walkingMan" src="walkingMan.glb"></a-assets-item>
-                <a-assets-item id="walkingMan1" src="walkingMan1.glb"></a-assets-item>
-                                <a-assets-item id="walkingWoman" src="walkingWoman.glb"></a-assets-item>
+                <img id="skyTexture" src="assets/sky.jpg">
+                <a-asset-item id="road" src="assets/road.glb"></a-asset-item>
+                <a-assets-item id="sidewalk" src="assets/sidewalk.glb"></a-assets-item>               
+                <a-assets-item id="streetLight" src="assets/streetLight.glb"></a-assets-item> 
+                <a-assets-item id="cityBlock" src="assets/cityBlock.glb"></a-assets-item>
+                <a-assets-item id="roadIntersection" src="assets/roadintersection.glb"></a-assets-item>
+             <a-assets-item id="building1" src="assets/building1.glb"></a-assets-item>
+                <a-assets-item id="cityHotel" src="assets/cityHotel.glb"></a-assets-item>
+                <a-assets-item id="citybuilding" src="assets/citybuilding.glb"></a-assets-item>
+                <a-assets-item id="hotelExterior" src="assets/hotelExterior.glb"></a-assets-item>
+                <a-assets-item id="metlifeBuilding" src="assets/metlifeBuilding.glb"></a-assets-item>
+                <a-assets-item id="basketball" src="assets/basketball.jpg"></a-assets-item>
+                <a-assets-item id="basketballHoop" src="assets/basketballHoop.glb"></a-assets-item>
+                <a-assets-item id="basketBall" src="assets/basketBall.glb"></a-assets-item>
+                <a-assets-item id="fence" src="assets/fence.glb"></a-assets-item>
+                <a-assets-item id="parkCafe" src="assets/parkCafe.glb"></a-assets-item>
+                <a-assets-item id="empireStateBuilding" src="assets/empireStateBuilding.glb"></a-assets-item>
+                <a-assets-item id="building2" src="assets/building2.glb"></a-assets-item> 
+                <a-assets-item id="stadium" src="assets/stadium.glb"></a-assets-item>
+                <a-assets-item id="building3" src="assets/building3.glb"></a-assets-item>
+                <a-assets-item id="apartment" src="assets/apartment.glb"></a-assets-item>
+                <a-assets-item id="chicagoBuildings" src="assets/chicagoBuildings.glb"></a-assets-item>
+                <a-assets-item id="cornerBuilding" src="assets/cornerBuilding.glb"></a-assets-item>
+                <a-assets-item id="building4" src="assets/building4.glb"></a-assets-item>
+                <a-assets-item id="residentialTower" src="assets/residentialTower.glb"></a-assets-item>
+                <a-assets-item id="building5" src="assets/building5.glb"></a-assets-item>
+                <a-assets-item id="trafficLight" src="assets/trafficLight.glb"></a-assets-item>
+                <a-assets-item id="busStop" src="assets/busStop.glb"></a-assets-item> -->
+                <a-assets-item id="walkingMan" src="assets/walkingMan.glb"></a-assets-item>
+                <a-assets-item id="walkingMan1" src="assets/walkingMan1.glb"></a-assets-item>
+                <a-assets-item id="walkingWoman" src="assets/walkingWoman.glb"></a-assets-item>
+                <a-assets-item id="walkingMan2" src="assets/walkingMan2.glb"></a-assets-item>
+                <a-assets-item id="car" src="assets/car.glb"></a-assets-item>
+                <a-assets-item id="van" src="assets/van.glb"></a-assets-item>
+                <a-assets-item id="birds" src="assets/birds.glb"></a-assets-item>
+                <a-assets-item id="standingMan" src="assets/standingMan.glb"></a-assets-item>
+                <a-assets-item id="tree" src="assets/tree.glb"></a-assets-item>
+                <a-assets-item id="dog" src="assets/dog.glb"></a-assets-item>
+                <a-assets-item id="women2" src="assets/women2.glb"></a-assets-item>
+                <a-assets-item id="skater" src="assets/skater.glb"></a-assets-item>
+            </a-assets>  
 
-                
-
-
-
-
-            </a-assets>   
-
-            <!-- <a-entity gltf-model="#walkingMan" scale="0.1 0.1 0.1" animation-mixer ></a-entity> -->
-            <a-entity gltf-model="#walkingMan" scale="0.09 0.09 0.09" rotation="0 180 0" animation-mixer position="-10 1 -5"
-                animation="property: position; to: -10 1 -160; dur: 500000; easing: linear; loop:true"></a-entity>
-            <a-entity gltf-model="#walkingMan1" scale="2 2 2" rotation="0 0 0" animation-mixer="" position="-12 1 -160"
-                    animation="property: position; to: -10 1 -5; dur: 50000; easing: linear; loop:true"></a-entity>
-            <a-entity gltf-model="#walkingWoman" scale="2 2 2" rotation="0 180 0" animation-mixer="" position="14 1 -5"
-                        animation="property: position; to: 14 1 -160; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-sky rotation="0 0 0" src="#skyTexture" animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true;"></a-sky>
+            <a-sound src="src: url(assets/music/cityBackground.mp3)" autoplay="true" loop="true" volume="10" position="0 2 5" ></a-sound>
 
 
-            <a-sky src="#skyTexture"></a-sky>
+        <a-entity  particle-system="
+            color: #228B22; 
+            preset: none; 
+            particleCount: 20;
+            maxAge: 6;
+            positionSpread: 10 10 10;
+            velocityValue: 0 -2 0;
+            velocitySpread: 2 0 2;
+            size: 1;
+            sizeSpread: 0.2;
+            opacity: 0.8;  <!-- Adjusted opacity value -->
+            opacitySpread: 0;
+            rotationAngle: 0;
+            rotationAngleSpread: 0;
+            accelerationValue: 0 -2 0;
+            accelerationSpread: 1 0.5 1;
+            texture: assets/leaf.jpg;
+            randomize: true;
+            blending: 1;" position="33 10 -45">
+        </a-entity>
+        <a-entity  particle-system="
+                    color: #228B22; 
+                    preset: none; 
+                    particleCount: 20;
+                    maxAge: 6;
+                    positionSpread: 10 10 10;
+                    velocityValue: 0 -2 0;
+                    velocitySpread: 2 0 2;
+                    size: 1;
+                    sizeSpread: 0.2;
+                    opacity: 0.8;  <!-- Adjusted opacity value -->
+                    opacitySpread: 0;
+                    rotationAngle: 0;
+                    rotationAngleSpread: 0;
+                    accelerationValue: 0 -2 0;
+                    accelerationSpread: 1 0.5 1;
+                    texture: assets/leaf.jpg;
+                    randomize: true;
+                    blending: 1;" position="410 10 -220">
+        </a-entity>
+        <a-entity particle-system="
+                            color: #228B22; 
+                            preset: none; 
+                            particleCount: 20;
+                            maxAge: 6;
+                            positionSpread: 10 10 10;
+                            velocityValue: 0 -2 0;
+                            velocitySpread: 2 0 2;
+                            size: 1;
+                            sizeSpread: 0.2;
+                            opacity: 0.8;  <!-- Adjusted opacity value -->
+                            opacitySpread: 0;
+                            rotationAngle: 0;
+                            rotationAngleSpread: 0;
+                            accelerationValue: 0 -2 0;
+                            accelerationSpread: 1 0.5 1;
+                            texture: assets/leaf.jpg;
+                            randomize: true;
+                            blending: 1;" position="360 10 -220">
+        </a-entity>
+
+
+        <!-- <a-entity particle-system="
+                        color: #228B22; 
+                        preset: none; 
+                        particleCount: 10;
+                        maxAge: 6;
+                        positionSpread: 10 10 10;
+                        velocityValue: 0 -2 0;
+                        velocitySpread: 2 0 2;
+                        size: 1;
+                        sizeSpread: 0.2;
+                        opacity: 100;
+                        opacitySpread: 0;
+                        rotationAngle: 00;
+                        rotationAngleSpread: 0;
+                        accelerationValue: 0 -2 0;
+                        accelerationSpread: 1 0.5 1;
+                        texture: assets/leaf.jpg;
+                        randomize: true;
+                        blending: 1;" position="33 10 -45" rotation="0 -90 0">
+        </a-entity> -->
+
+
+            <a-entity shadow gltf-model="#birds" scale="5 5 5" rotation="0 0 0" animation-mixer=""
+                animation="property: position;from:-300 100 0; to: 300 100 -300; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingMan1" scale="2 2 2" rotation="0 0 0" animation-mixer
+                    animation="property: position;from:-12 1 -160; to: -10 1 -5; dur: 60000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingWoman" scale="1.9 1.9 1.9" rotation="0 0 0" animation-mixer
+                        animation="property: position;from:16 1 -160; to: 16 1 -5; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingMan2" scale="0.035 0.035 0.035" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:14 1 -5; to: 14 1 -160; dur: 50000; easing: linear; loop:true"></a-entity>
+             <a-entity shadow gltf-model="#standingMan" position="-10 1 -20" scale="3.5 3.5 3.5" rotation="0 90 0"
+                        animation-mixer=""></a-entity>
+            <a-entity shadow gltf-model="#car" scale="0.03 0.03 0.03" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:-2 1 -5; to: -2 1 -400; dur: 18000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#van" scale="3 3 3" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:5 1 -400; to: 5 1 -4; dur: 18000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#dog" position="13 1 -24" scale="3.5 3.5 3.5" rotation="0 -90 0"
+                animation-mixer="clip: rollover;"></a-entity>
+                <a-entity shadow="" gltf-model="#women2" position="-9 1 -124" scale="0.04 0.04 0.04" rotation="0 90 0"
+                    animation-mixer=""></a-entity>
             
-            <a-entity position="0 -2 0" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -40" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -80" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -120" rotation="0 90 0" scale="1 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -240" rotation="0 90 0" scale="0.7 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -280" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -320" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -360" rotation="0 90 0" scale="0.6 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="0 -2 -360" rotation="0 90 0" scale="0.6 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
 
-            <a-entity position="331 -2 -233" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 -283" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 -333" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-
-            <a-entity position="331 -2 -145" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 -105" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 -65" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 -15" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-            <a-entity position="331 -2 0" rotation="0 90 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road" ></a-gltf-model>
-            </a-entity>
-
-        <a-entity position="295 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="245 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="205 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="175 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="135 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="95 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="55 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="36 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road" ></a-gltf-model>
-        </a-entity>
-
-
-            <a-entity position="43 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-            <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="93 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="143 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="193 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="243 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="293 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="373 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-
-            <a-entity position="-43 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="-93 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-            <a-entity position="-143 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
-                <a-gltf-model src="#road"></a-gltf-model>
-            </a-entity>
-
-
-            <a-entity position="2 0 -190" rotation="0 90 0" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#roadIntersection"></a-gltf-model>
-            </a-entity>
-            <a-entity position="333 0 -190" rotation="0 90 0" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#roadIntersection"></a-gltf-model>
-            </a-entity>
-
-
+            <a-entity shadow gltf-model="#walkingMan1" scale="2 2 2" rotation="0 180 0" animation-mixer
+                animation="property: position;from:-12 1 -210; to: -10 1 -400; dur: 60000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingWoman" scale="1.9 1.9 1.9" rotation="0 180 0" animation-mixer
+                animation="property: position;from:16 1 -210; to: 16 1 -400; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingMan2" scale="0.035 0.035 0.035" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:14 1 -210; to: 14 1 -400; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow="" gltf-model="#women2" position="-9 1 -344" scale="0.04 0.04 0.04" rotation="0 90 0"
+                animation-mixer=""></a-entity>
            
 
+            <a-entity id="waking" shadow gltf-model="#walkingMan1" scale="2 2 2" rotation="0 0 0" animation-mixer=""
+                animation="property: position;from:320 1 -160; to: 320 1 -5; dur: 60000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingWoman" scale="1.9 1.9 1.9" rotation="0 0 0" animation-mixer=""
+                animation="property: position;from:320 1 -160; to: 320 1 -5; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingMan2" scale="0.035 0.035 0.035" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:345 1 -5; to: 345 1 -160; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#standingMan" position="344 1 -160" scale="3.5 3.5 3.5" rotation="0 -90 0"
+            animation-mixer=""></a-entity>
+            <a-entity shadow gltf-model="#car" scale="0.03 0.03 0.03" rotation="0 180 0" animation-mixer=""
+            animation="property: position;from:329 1 -5; to: 329 1 -400; dur: 18000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#standingMan" position="344 1 -160" scale="3.5 3.5 3.5" rotation="0 -90 0"
+                animation-mixer=""></a-entity>
+            <a-entity shadow="" gltf-model="#women2" position="332 1 -344" scale="0.04 0.04 0.04" rotation="0 90 0"
+                animation-mixer=""></a-entity>
+
+            <a-entity id="waking" shadow gltf-model="#walkingMan1" scale="2 2 2" rotation="0 180 0" animation-mixer=""
+            animation="property: position;from:320 1 -185; to: 320 1 -400; dur: 60000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingWoman" scale="1.9 1.9 1.9" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:320 1 -190; to: 320 1 -400; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow gltf-model="#walkingMan2" scale="0.035 0.035 0.035" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:345 1 -190; to: 345 1 -400; dur: 50000; easing: linear; loop:true"></a-entity>
             
 
-            <!-- <a-entity position="-7 0 -10" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow="" gltf-model="#women2" position="40 1 22" scale="0.04 0.04 0.04" rotation="0 0 0"
+                animation-mixer=""></a-entity>
+
+
+            <a-entity shadow="" gltf-model="#women2" position="40 1 -203" scale="0.04 0.04 0.04" rotation="0 0 0"
+               animation-mixer=""></a-entity>
+            <a-entity shadow gltf-model="#walkingMan2" scale="0.035 0.035 0.035" rotation="0 90 0" animation-mixer=""
+                animation="property: position;from:20 1 -205; to: 320 1 -205; dur: 50000; easing: linear; loop:true"></a-entity>
+            <a-entity shadow="" gltf-model="#skater" scale="4 4 4" rotation="0 180 0" animation-mixer=""
+                animation="property: position;from:20 1 -178; to: 320 1 -178; dur: 50000; easing: linear; loop:true"></a-entity>
+           
+
+
+
+            <a-entity shadow position="0 -2 0" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="-7 0 10" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -40" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 -10" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -80" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 10" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -120" rotation="0 90 0" scale="1 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="-7 0 -30" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -240" rotation="0 90 0" scale="0.7 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="-7 0 -50" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -280" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 -30" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -320" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 -50" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -360" rotation="0 90 0" scale="0.6 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="-7 0 -70" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="0 -2 -360" rotation="0 90 0" scale="0.6 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
             </a-entity>
-            <a-entity position="-7 0 -90" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+
+            <a-entity shadow position="331 -2 -233" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 -70" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
+            <a-entity shadow position="331 -2 -283" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
             </a-entity>
-            <a-entity position="11 0 -90" scale="0.05 0.05 0.05">
-                <a-gltf-model src="#streetLight"></a-gltf-model>
-            </a-entity> -->
+            <a-entity shadow position="331 -2 -333" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+
+            <a-entity shadow position="331 -2 -145" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="331 -2 -105" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="331 -2 -65" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="331 -2 -15" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="331 -2 0" rotation="0 90 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+
+           <a-entity shadow position="295 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+            <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="245 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="205 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="175 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="135 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="95 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="55 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="36 -2 30" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road" ></a-gltf-model>
+            </a-entity>
+
+
+            <a-entity shadow position="43 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+            <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="93 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="143 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="193 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="243 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="293 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="373 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+
+            <a-entity shadow position="-43 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="-93 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="-143 -2 -193" rotation="0 0 0" scale="0.5 0.5 0.5">
+                <a-gltf-model src="#road"></a-gltf-model>
+            </a-entity>
+
+
+            <a-entity shadow position="2 0 -190" rotation="0 90 0" scale="0.05 0.05 0.05">
+                <a-gltf-model src="#roadIntersection"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="333 0 -190" rotation="0 90 0" scale="0.05 0.05 0.05">
+                <a-gltf-model src="#roadIntersection"></a-gltf-model>
+            </a-entity>
+
             <script>
-                for (let i = 0; i < 16; i++) {
+                for (let i = 0; i < 18; i++) {
                     let x = i % 2 === 0 ? -7 : 11;
-                    let z = -10 - 20 * Math.floor(i / 2);
+                    let z = 10 - 20 * Math.floor(i / 2);
 
                     document.write(`
-                                <a-entity position="${x} 0 ${z}" scale="0.05 0.05 0.05">
+                                <a-entity shadow position="${x} 0 ${z}" scale="0.05 0.05 0.05">
                                     <a-gltf-model src="#streetLight"></a-gltf-model>
                                 </a-entity>
                             `);
-                }
+               
+                    let x1 = i % 2 === 0 ? -7 : 11;
+                    let z1 = -220 - 20 * Math.floor(i / 2);
+
+                    document.write(`
+                                <a-entity shadow position="${x1} 0 ${z1}" scale="0.05 0.05 0.05">
+                                    <a-gltf-model src="#streetLight"></a-gltf-model>
+                                </a-entity>
+                            `);
+                    
+                     let x2 = i % 2 === 0 ? 324 : 342;
+                    let z2 = 10 - 20 * Math.floor(i / 2);
+                    document.write(`
+                                <a-entity shadow position="${x2} 0 ${z2}" scale="0.05 0.05 0.05">
+                                    <a-gltf-model src="#streetLight"></a-gltf-model>
+                                </a-entity>
+                            `);        
+
+                    let x3 = i % 2 === 0 ? 324 : 342;
+                    let z3 = -220 - 20 * Math.floor(i / 2);
+                    document.write(`
+                                <a-entity shadow position="${x3} 0 ${z3}" scale="0.05 0.05 0.05">
+                                    <a-gltf-model src="#streetLight"></a-gltf-model>
+                                </a-entity>
+                            `);
+                    }
             </script>
-            
-            
 
-
-            <a-entity position="-12.5 0.6 -5" rotation="0 90 0" scale="0.15 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -5" rotation="0 90 0" scale="0.15 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -5" rotation="0 90 0" scale="0.07 0.03 0.05">
+            <a-entity shadow position="18 0.6 -5" rotation="0 90 0" scale="0.07 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -40" rotation="0 90 0" scale="0.06 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -40" rotation="0 90 0" scale="0.06 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -40" rotation="0 90 0" scale="0.06 0.03 0.05">
+            <a-entity shadow position="18 0.6 -40" rotation="0 90 0" scale="0.06 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -80" rotation="0 90 0" scale="0.06 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -80" rotation="0 90 0" scale="0.06 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -80" rotation="0 90 0" scale="0.06 0.03 0.05">
+            <a-entity shadow position="18 0.6 -80" rotation="0 90 0" scale="0.06 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -120" rotation="0 90 0" scale="0.06 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -120" rotation="0 90 0" scale="0.06 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -120" rotation="0 90 0" scale="0.06 0.03 0.05">
+            <a-entity shadow position="18 0.6 -120" rotation="0 90 0" scale="0.06 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -160" rotation="0 90 0" scale="0.04 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -160" rotation="0 90 0" scale="0.04 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -160" rotation="0 90 0" scale="0.04 0.03 0.05">
+            <a-entity shadow position="18 0.6 -160" rotation="0 90 0" scale="0.04 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -230" rotation="0 90 0" scale="0.07 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -230" rotation="0 90 0" scale="0.07 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -230" rotation="0 90 0" scale="0.07 0.03 0.05">
+            <a-entity shadow position="18 0.6 -230" rotation="0 90 0" scale="0.07 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -250" rotation="0 90 0" scale="0.04 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -250" rotation="0 90 0" scale="0.04 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -250" rotation="0 90 0" scale="0.04 0.03 0.05">
+            <a-entity shadow position="18 0.6 -250" rotation="0 90 0" scale="0.04 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -300" rotation="0 90 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -300" rotation="0 90 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -300" rotation="0 90 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="18 0.6 -300" rotation="0 90 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-12.5 0.6 -350" rotation="0 90 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="-12.5 0.6 -350" rotation="0 90 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="18 0.6 -350" rotation="0 90 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="18 0.6 -350" rotation="0 90 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="57 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="57 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="57 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="57 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="107 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="107 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="107 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="107 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="167 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="167 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="167 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="167 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="207 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="207 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="207 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="207 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="267 0.6 -176" rotation="0 0 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="267 0.6 -176" rotation="0 0 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="267 0.6 -206" rotation="0 0 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="267 0.6 -206" rotation="0 0 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="398.5 0.6 -206" rotation="0 0 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="398.5 0.6 -206" rotation="0 0 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="398.5 0.6 -176" rotation="0 0 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="398.5 0.6 -176" rotation="0 0 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
 
-            <a-entity position="268.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="268.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="269 0.6 47.5" rotation="0 0 0" scale="0.2 0.03 0.05">
+            <a-entity shadow position="269 0.6 47.5" rotation="0 0 0" scale="0.2 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="168.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="168.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="169 0.6 47.5" rotation="0 0 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="169 0.6 47.5" rotation="0 0 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="65.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="65.5 0.6 17.5" rotation="0 0 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="65.5 0.6 47.5" rotation="0 0 0" scale="0.2 0.03 0.05">
+            <a-entity shadow position="65.5 0.6 47.5" rotation="0 0 0" scale="0.2 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
 
 
-            <a-entity position="317.5 0.6 -258" rotation="0 90 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="317.5 0.6 -258" rotation="0 90 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="348 0.6 -258" rotation="0 90 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="348 0.6 -258" rotation="0 90 0" scale="0.13 0.03 0.04">
                <a-gltf-model src="#sidewalk" ></a-gltf-model>
              </a-entity>
-            <a-entity position="317.5 0.6 -358" rotation="0 90 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="317.5 0.6 -358" rotation="0 90 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="348 0.6 -358" rotation="0 90 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="348 0.6 -358" rotation="0 90 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="317.5 0.6 -120" rotation="0 90 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="317.5 0.6 -120" rotation="0 90 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="348 0.6 -120" rotation="0 90 0" scale="0.13 0.03 0.04">
+            <a-entity shadow position="348 0.6 -120" rotation="0 90 0" scale="0.13 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="317.5 0.6 -25" rotation="0 90 0" scale="0.13 0.03 0.05">
+            <a-entity shadow position="317.5 0.6 -25" rotation="0 90 0" scale="0.13 0.03 0.05">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
-            <a-entity position="348 0.6 -25" rotation="0 90 0" scale="0.2 0.03 0.04">
+            <a-entity shadow position="348 0.6 -25" rotation="0 90 0" scale="0.2 0.03 0.04">
                 <a-gltf-model src="#sidewalk" ></a-gltf-model>
             </a-entity>
 
 
-            <a-entity position="-56 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="-56 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-56 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="-56 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-107 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
+            <a-entity shadow position="-107 0.6 -176" rotation="0 0 0" scale="0.1 0.03 0.04">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
-            <a-entity position="-107 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
+            <a-entity shadow position="-107 0.6 -206" rotation="0 0 0" scale="0.1 0.03 0.05">
                 <a-gltf-model src="#sidewalk"></a-gltf-model>
             </a-entity>
             
 
            
 
-            <a-entity position="97 0 -165" rotation="0 -90 0" scale="23 23 23">
+            <a-entity shadow position="97 0 -165" rotation="0 -90 0" scale="23 23 23">
                 <a-gltf-model src="#cityBlock"></a-gltf-model>
             </a-entity>
-            <a-entity position="-10 2 -450 " scale="3 3 3">
+            <a-entity shadow position="-10 2 -450 " scale="3 3 3">
                 <a-gltf-model src="#building1"></a-gltf-model>
             </a-entity>
-            <a-entity position="-17 0 -210 " rotation="0 90 0" scale="2 2 2">
+            <a-entity shadow position="-17 0 -210 " rotation="0 90 0" scale="2 2 2">
                 <a-gltf-model src="#cityHotel"></a-gltf-model>
             </a-entity>
 
-            <a-entity position="-25 0 -20 " rotation="0 0 0" scale="50 50 50">
+            <a-entity shadow position="-25 0 -20 " rotation="0 0 0" scale="50 50 50">
                 <a-gltf-model src="#citybuilding"></a-gltf-model>
             </a-entity>
-            <a-entity position="240 0 -310 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
+            <a-entity shadow position="240 0 -310 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
                 <a-gltf-model src="#hotelExterior"></a-gltf-model>
             </a-entity>
-        <a-entity position="289 0 -235 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
-            <a-gltf-model src="#building2" ></a-gltf-model>
-        </a-entity>
-        <a-entity position="277 0 -300 " rotation="0 180 0" scale="5 5 5">
-            <a-gltf-model src="#residentialTower" ></a-gltf-model>
-        </a-entity>
-            <a-entity position="73 0 -350 " rotation="0 90 0" scale=" 2 2 2">
+            <a-entity shadow position="289 0 -235 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
+                <a-gltf-model src="#building2" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="277 0 -300 " rotation="0 180 0" scale="5 5 5">
+                <a-gltf-model src="#residentialTower" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="73 0 -350 " rotation="0 90 0" scale=" 2 2 2">
                 <a-gltf-model src="#metlifeBuilding"></a-gltf-model>
             </a-entity>
 
-        <a-entity position="385 0.5 -250 " rotation="0 45 0" scale=" 2 2 2">
-            <a-gltf-model src="#parkCafe" ></a-gltf-model>
-        </a-entity>
-            <a-entity position="0 148 -545 " rotation="0 0 0" scale=" 2 2 2">
+            <a-entity shadow position="385 0.5 -250 " rotation="0 45 0" scale=" 2 2 2">
+                <a-gltf-model src="#parkCafe" ></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="0 148 -545 " rotation="0 0 0" scale=" 2 2 2">
                 <a-gltf-model src="#empireStateBuilding" ></a-gltf-model>
             </a-entity>
-            <a-entity position="-19 0 -320 " rotation="0 0 0" scale=" 25 25 25">
+            <a-entity shadow position="-19 0 -320 " rotation="0 0 0" scale=" 25 25 25">
                 <a-gltf-model src="#building4" ></a-gltf-model>
             </a-entity>
-            <a-entity position="410 0 -100 " rotation="0 -20 0" scale=" 0.015 0.015 0.015">
+            <a-entity shadow position="410 0 -100 " rotation="0 -20 0" scale=" 0.015 0.015 0.015">
                 <a-gltf-model src="#stadium" ></a-gltf-model>
             </a-entity>
-            <a-entity position="285 0 -105 " rotation="0 0 0" scale=" 1.8 1.8 1.8">
+            <a-entity shadow position="285 0 -105 " rotation="0 0 0" scale=" 1.8 1.8 1.8">
                 <a-gltf-model src="#building3" ></a-gltf-model>
             </a-entity>
-            <a-entity position="245 0 7 " rotation="0 90 0" scale=" 21 21 21">
+            <a-entity shadow position="245 0 7 " rotation="0 90 0" scale=" 21 21 21">
                 <a-gltf-model src="#cityBlock" ></a-gltf-model>
             </a-entity>
-            <a-entity position="51 1 -26 " rotation="0 90 0" scale=" 1.2 1.2 1">
+            <a-entity shadow position="51 1 -26 " rotation="0 90 0" scale=" 1.2 1.2 1">
                 <a-gltf-model src="#apartment" ></a-gltf-model>
             </a-entity>
-            <a-entity position="-50 1 15  " rotation="0 180 0" scale=" 5 5 5">
+            <a-entity shadow position="-50 1 15  " rotation="0 180 0" scale=" 5 5 5">
                 <a-gltf-model src="#residentialTower" ></a-gltf-model>
             </a-entity>
-            <a-entity position="-240 1 -130  " rotation="0 10 0" scale=" 1 1 1">
+            <a-entity shadow position="-240 1 -130  " rotation="0 10 0" scale=" 1 1 1">
                <a-gltf-model src="#cornerBuilding" ></a-gltf-model>
             </a-entity>
-            <a-entity position="-100 1 -125  " rotation="0 90 0" scale=" 1 1 1">
+            <a-entity shadow position="-100 1 -125  " rotation="0 90 0" scale=" 1 1 1">
                 <a-gltf-model src="#cornerBuilding" ></a-gltf-model>
             </a-entity>
-            <a-entity position="395 1 -10  " rotation="0 90 0" scale=" 20 15 15">
+            <a-entity shadow position="395 1 -10  " rotation="0 90 0" scale=" 20 15 15">
                 <a-gltf-model src="#building5" ></a-gltf-model>
             </a-entity>
 
-            <a-entity position="-10 1 -177  " rotation="0 0 0" scale=" 0.2 0.2 0.2" animation-mixer="clip: *">
+            <a-entity shadow position="-10 1 -177  " rotation="0 0 0" scale=" 0.2 0.2 0.2" animation-mixer="clip: *">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
-            <a-entity position="14 1 -177  " rotation="0 90 0" scale=" 0.2 0.2 0.2">
+            <a-entity shadow position="14 1 -177  " rotation="0 90 0" scale=" 0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
-        <a-entity position="-11 1 -201 " rotation="0 -90 0" scale=" 0.2 0.2 0.2">
-            <a-gltf-model src="#trafficLight"></a-gltf-model>
-        </a-entity>
-            <a-entity position="15 1 -201  " rotation="0 180 0" scale=" 0.2 0.2 0.2">
+            <a-entity shadow position="-11 1 -201 " rotation="0 -90 0" scale=" 0.2 0.2 0.2">
+                <a-gltf-model src="#trafficLight"></a-gltf-model>
+            </a-entity>
+            <a-entity shadow position="15 1 -201  " rotation="0 180 0" scale=" 0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
 
 
-            <a-entity position="345 1 -203" rotation="0 180 0" scale="0.2 0.2 0.2">
+            <a-entity shadow position="345 1 -203" rotation="0 180 0" scale="0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"  animation-mixer></a-gltf-model>
             </a-entity>
-            <a-entity position="344 1 -177  " rotation="0 90 0" scale=" 0.2 0.2 0.2">
+            <a-entity shadow position="344 1 -177  " rotation="0 90 0" scale=" 0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
-            <a-entity position="323 1 -204 " rotation="0 -90 0" scale=" 0.2 0.2 0.2">
+            <a-entity shadow position="323 1 -204 " rotation="0 -90 0" scale=" 0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
-            <a-entity position="345 1 -203  " rotation="0 180 0" scale=" 0.2 0.2 0.2">
+            <a-entity shadow position="345 1 -203  " rotation="0 180 0" scale=" 0.2 0.2 0.2">
                 <a-gltf-model src="#trafficLight"></a-gltf-model>
             </a-entity>
 
-            <a-entity position=" 35 0 -45  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
+            <a-entity shadow position=" 35 0 -45  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
                 <a-gltf-model src="#tree"></a-gltf-model>
             </a-entity>
-            <a-entity position=" 35 0 -45  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
+            <a-entity shadow position=" 35 0 -45  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
                 <a-gltf-model src="#tree"></a-gltf-model>
             </a-entity>
-            <a-entity position=" 360 0 -220  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
+            <a-entity shadow position=" 360 0 -220  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
                 <a-gltf-model src="#tree"></a-gltf-model>
             </a-entity>
-            <a-entity position=" 410 0 -220  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
+            <a-entity shadow position=" 410 0 -220  " rotation="0 180 0" scale=" 0.6 0.6 0.6">
                 <a-gltf-model src="#tree"></a-gltf-model>
             </a-entity>
-            <a-entity position=" 356 1 -163   " rotation="0 -90 0" scale="3 3 3">
+            <a-entity shadow position=" 356 1 -163   " rotation="0 -90 0" scale="3 3 3">
                 <a-gltf-model src="#busStop"></a-gltf-model>
             </a-entity>
             
 
             <a-cylinder position="-143 0.6 -190" radius="50" height="0.1" rotation="0 0 0" material="src: thar.jpg; repeat: 4 4"
                 geometry=""></a-cylinder>
+            <a-box position="1.5 0.6 33" width="20.5" depth=" 17.5" height="0.1" material="src: thar.jpg;" geometry=""></a-box>
+            <a-box position="333 0.6 33" width="20.5" depth=" 17.5" height="0.1" material="src: thar.jpg;" geometry=""></a-box>
 
-                
 
-
-            <a-entity position="265 0 -150">
+            <a-entity shadow position="265 0 -150">
                 <a-box  width="55" height="0.1" depth="30" material="src: basketball.jpg" geometry=""></a-box>
-                    <a-entity position="-30 -2 0 " rotation="0 -90 0" scale=" 1.5 1.5 1.5">
+                    <a-entity shadow position="-30 -2 0 " rotation="0 -90 0" scale=" 1.5 1.5 1.5">
                             <a-gltf-model src="#basketballHoop" ></a-gltf-model>
                     </a-entity>
-                    <a-entity position="30 -2 0 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
+                    <a-entity shadow position="30 -2 0 " rotation="0 90 0" scale=" 1.5 1.5 1.5">
                         <a-gltf-model src="#basketballHoop" ></a-gltf-model>
                     </a-entity>
-                    <a-entity  position="0 0.7 0"rotation="0 90 0" scale=" 0.7 0.7 0.7">
+                    <a-entity shadow  position="0 0.7 0"rotation="0 90 0" scale=" 0.7 0.7 0.7">
                         <a-gltf-model src="#basketBall" ></a-gltf-model>
                     </a-entity>
-                <a-entity position="-15 0.7 -30" rotation="0 0 0" scale=" 10 4 4">
+                <a-entity shadow position="-15 0.7 -30" rotation="0 0 0" scale=" 10 4 4">
                     <a-gltf-model src="#fence" ></a-gltf-model>
                 </a-entity>
-                    <a-entity position="-53 0.7 -30" rotation="0 0 0" scale=" 10 4 4">
+                    <a-entity shadow position="-53 0.7 -30" rotation="0 0 0" scale=" 10 4 4">
                         <a-gltf-model src="#fence" ></a-gltf-model>
                     </a-entity>
-                    <a-entity position="20 0.7 30" rotation="0 180 0" scale=" 10 4 4">
+                    <a-entity shadow position="20 0.7 30" rotation="0 180 0" scale=" 10 4 4">
                         <a-gltf-model src="#fence" ></a-gltf-model>
                     </a-entity>
-                    <a-entity position="58 0.7 30" rotation="0 180 0" scale=" 10 4 4">
+                    <a-entity shadow position="58 0.7 30" rotation="0 180 0" scale=" 10 4 4">
                         <a-gltf-model src="#fence" ></a-gltf-model>
                     </a-entity>
-                    <a-entity position="-45 0.7 40" rotation="0 90 0" scale=" 10.8 4 4">
+                    <a-entity shadow position="-45 0.7 40" rotation="0 90 0" scale=" 10.8 4 4">
                         <a-gltf-model src="#fence" ></a-gltf-model>
                     </a-entity>
-                    <a-entity position="51 0.7 -40" rotation="0 -90 0" scale=" 10.8 4 4">
+                    <a-entity shadow position="51 0.7 -40" rotation="0 -90 0" scale=" 10.8 4 4">
                         <a-gltf-model src="#fence" ></a-gltf-model>
                     </a-entity>
             </a-entity>
 
             
-            
-            
-
-
+            <a-plane id="ground" position="0 1 300" shadow rotation="-90 0 0" width="1000" height="500"
+                material="color: #008000"></a-plane>
+    
         </a-scene>
 
     </body>
