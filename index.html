@@ -12,13 +12,11 @@
 
 <body>
     <a-scene fog="type: linear; color: #cccccc; near: 20; far: 500">
-        <a-camera id="camera" position="0 9 -160"></a-camera>
+        <a-camera id="camera" position="0 9 0"></a-camera>
         <!-- Ground plane -->
         <a-plane rotation="-90 0 0" width="1000" height="1000" color="#333333"></a-plane>
 
-
-
-        <!-- <a-light type="ambient" intensity="1.5"></a-light>-->
+        <a-light type="ambient" intensity="0.9"></a-light>
         
 
             <a-assets>
@@ -28,7 +26,7 @@
                 <a-assets-item id="streetLight" src="assets/streetLight.glb"></a-assets-item> 
                 <a-assets-item id="cityBlock" src="assets/cityBlock.glb"></a-assets-item>
                 <a-assets-item id="roadIntersection" src="assets/roadintersection.glb"></a-assets-item>
-             <a-assets-item id="building1" src="assets/building1.glb"></a-assets-item>
+                <a-assets-item id="building1" src="assets/building1.glb"></a-assets-item>
                 <a-assets-item id="cityHotel" src="assets/cityHotel.glb"></a-assets-item>
                 <a-assets-item id="citybuilding" src="assets/citybuilding.glb"></a-assets-item>
                 <a-assets-item id="hotelExterior" src="assets/hotelExterior.glb"></a-assets-item>
@@ -43,13 +41,12 @@
                 <a-assets-item id="stadium" src="assets/stadium.glb"></a-assets-item>
                 <a-assets-item id="building3" src="assets/building3.glb"></a-assets-item>
                 <a-assets-item id="apartment" src="assets/apartment.glb"></a-assets-item>
-                <a-assets-item id="chicagoBuildings" src="assets/chicagoBuildings.glb"></a-assets-item>
                 <a-assets-item id="cornerBuilding" src="assets/cornerBuilding.glb"></a-assets-item>
                 <a-assets-item id="building4" src="assets/building4.glb"></a-assets-item>
                 <a-assets-item id="residentialTower" src="assets/residentialTower.glb"></a-assets-item>
                 <a-assets-item id="building5" src="assets/building5.glb"></a-assets-item>
                 <a-assets-item id="trafficLight" src="assets/trafficLight.glb"></a-assets-item>
-                <a-assets-item id="busStop" src="assets/busStop.glb"></a-assets-item> -->
+                <a-assets-item id="busStop" src="assets/busStop.glb"></a-assets-item>
                 <a-assets-item id="walkingMan" src="assets/walkingMan.glb"></a-assets-item>
                 <a-assets-item id="walkingMan1" src="assets/walkingMan1.glb"></a-assets-item>
                 <a-assets-item id="walkingWoman" src="assets/walkingWoman.glb"></a-assets-item>
@@ -68,27 +65,7 @@
             <a-sound src="src: url(assets/music/cityBackground.mp3)" autoplay="true" loop="true" volume="10" position="0 2 5" ></a-sound>
 
 
-        <a-entity  particle-system="
-            color: #228B22; 
-            preset: none; 
-            particleCount: 20;
-            maxAge: 6;
-            positionSpread: 10 10 10;
-            velocityValue: 0 -2 0;
-            velocitySpread: 2 0 2;
-            size: 1;
-            sizeSpread: 0.2;
-            opacity: 0.8;  <!-- Adjusted opacity value -->
-            opacitySpread: 0;
-            rotationAngle: 0;
-            rotationAngleSpread: 0;
-            accelerationValue: 0 -2 0;
-            accelerationSpread: 1 0.5 1;
-            texture: assets/leaf.jpg;
-            randomize: true;
-            blending: 1;" position="33 10 -45">
-        </a-entity>
-        <a-entity  particle-system="
+            <a-entity particle-system="
                     color: #228B22; 
                     preset: none; 
                     particleCount: 20;
@@ -102,13 +79,33 @@
                     opacitySpread: 0;
                     rotationAngle: 0;
                     rotationAngleSpread: 0;
-                    accelerationValue: 0 -2 0;
+                    accelerationValue: 0 -1 0;
                     accelerationSpread: 1 0.5 1;
-                    texture: assets/leaf.jpg;
+                    texture: assets/leaf.png;
+                    randomize: true;
+                    blending: 1;" position="33 10 -45">
+            </a-entity>
+            <a-entity  particle-system="
+                    color: #228B22; 
+                    preset: none; 
+                    particleCount: 20;
+                    maxAge: 6;
+                    positionSpread: 10 10 10;
+                    velocityValue: 0 -2 0;
+                    velocitySpread: 2 0 2;
+                    size: 1;
+                    sizeSpread: 0.2;
+                    opacity: 0.8;  <!-- Adjusted opacity value -->
+                    opacitySpread: 0;
+                    rotationAngle: 0;
+                    rotationAngleSpread: 0;
+                    accelerationValue: 0 -1 0;
+                    accelerationSpread: 1 0.5 1;
+                    texture: assets/leaf.png;
                     randomize: true;
                     blending: 1;" position="410 10 -220">
-        </a-entity>
-        <a-entity particle-system="
+            </a-entity>
+            <a-entity particle-system="
                             color: #228B22; 
                             preset: none; 
                             particleCount: 20;
@@ -122,34 +119,15 @@
                             opacitySpread: 0;
                             rotationAngle: 0;
                             rotationAngleSpread: 0;
-                            accelerationValue: 0 -2 0;
+                            accelerationValue: 0 -1 0;
                             accelerationSpread: 1 0.5 1;
-                            texture: assets/leaf.jpg;
+                            texture: assets/leaf.png;
                             randomize: true;
                             blending: 1;" position="360 10 -220">
-        </a-entity>
+            </a-entity>
 
 
-        <!-- <a-entity particle-system="
-                        color: #228B22; 
-                        preset: none; 
-                        particleCount: 10;
-                        maxAge: 6;
-                        positionSpread: 10 10 10;
-                        velocityValue: 0 -2 0;
-                        velocitySpread: 2 0 2;
-                        size: 1;
-                        sizeSpread: 0.2;
-                        opacity: 100;
-                        opacitySpread: 0;
-                        rotationAngle: 00;
-                        rotationAngleSpread: 0;
-                        accelerationValue: 0 -2 0;
-                        accelerationSpread: 1 0.5 1;
-                        texture: assets/leaf.jpg;
-                        randomize: true;
-                        blending: 1;" position="33 10 -45" rotation="0 -90 0">
-        </a-entity> -->
+       
 
 
             <a-entity shadow gltf-model="#birds" scale="5 5 5" rotation="0 0 0" animation-mixer=""
@@ -559,7 +537,7 @@
             <a-entity shadow position="385 0.5 -250 " rotation="0 45 0" scale=" 2 2 2">
                 <a-gltf-model src="#parkCafe" ></a-gltf-model>
             </a-entity>
-            <a-entity shadow position="0 148 -545 " rotation="0 0 0" scale=" 2 2 2">
+            <a-entity shadow position="0 148 -555 " rotation="0 0 0" scale=" 2 2 2">
                 <a-gltf-model src="#empireStateBuilding" ></a-gltf-model>
             </a-entity>
             <a-entity shadow position="-19 0 -320 " rotation="0 0 0" scale=" 25 25 25">
@@ -641,7 +619,7 @@
 
 
             <a-entity shadow position="265 0 -150">
-                <a-box  width="55" height="0.1" depth="30" material="src: basketball.jpg" geometry=""></a-box>
+                <a-box  width="55" height="0.1" depth="30" material="src: assets/basketball.jpg" geometry=""></a-box>
                     <a-entity shadow position="-30 -2 0 " rotation="0 -90 0" scale=" 1.5 1.5 1.5">
                             <a-gltf-model src="#basketballHoop" ></a-gltf-model>
                     </a-entity>
